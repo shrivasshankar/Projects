@@ -4,4 +4,4 @@ This project visualizes advanced stats for NBA All-Stars during the 2024–25 re
 
 ## 📊 Visualization
 
-![All-Star Chart](images/nba_allstars.png)
+![All-Star Chart]([images/nba_allstars.png](https://raw.githubusercontent.com/shrivasshankar/images/main/nba_allstars.png))
