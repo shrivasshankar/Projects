@@ -11,8 +11,8 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 
 ```
 
-```{r}
-```{r, fig.width=8, fig.height=6}
+```{r, fig.width=8, fig.height=7}
+
 library(dplyr)
 library(lubridate)
 library(ggplot2)
@@ -113,17 +113,17 @@ win_plot <- ggplot(win_rate_df, aes(x = Player, y = win_rate)) +
   scale_x_discrete(expand = expansion(add = c(1.2, 1))) +
   labs(title = "Win Rates", x = NULL, y = "Win Rate") +
   theme_minimal(base_family = "Lato") +
-  theme(axis.text.y = element_text(margin = margin(r = 6), size = 6))
+  theme(axis.text.y = element_text(margin = margin(r = 6), size = 10))
 
-# Plot 2: Avg Points
+# Plot 2: Avg Points by All-Star
 avg_plot <- ggplot(summary_pts, aes(x = Player, y = avg_points)) +
   geom_col(width = 0.6, fill = "pink", alpha = 0.8) +
   geom_image(aes(image = headshot), size = 0.06, by = "width") +
   coord_flip() +
   scale_x_discrete(expand = expansion(add = c(1.2, 1))) +
-  labs(title = "Avg Points/Game by All-Star", x = NULL, y = "Avg PTS") +
+  labs(title = "Avg Points/Game By All-Star", x = NULL, y = "Avg PTS") +
   theme_minimal(base_family = "Lato") +
-  theme(axis.text.y = element_text(margin = margin(r = 6), size = 6))
+  theme(axis.text.y = element_text(margin = margin(r = 6), size = 10))
 
 # Plot 3: Plus/Minus (sorted by average)
 plus_plot <- ggplot(plus_minus_df, aes(x = Player, y = plusMinusPoints)) +
@@ -132,10 +132,10 @@ plus_plot <- ggplot(plus_minus_df, aes(x = Player, y = plusMinusPoints)) +
   scale_x_discrete(expand = expansion(add = c(1.2, 1))) +
   labs(title = "Plus/Minus Distribution", x = NULL, y = "+/–") +
   theme_minimal(base_family = "Lato") +
-  theme(axis.text.y = element_text(margin = margin(r = 6), size = 6))
+  theme(axis.text.y = element_text(margin = margin(r = 6), size = 10))
 
 # Combine plots
-(win_plot | avg_plot) / plus_plot +
+final = (win_plot | avg_plot) / plus_plot +
   plot_layout(heights = c(1, 1.25)) +
   plot_annotation(
     title = "2024-25 All-Star Performance Summary",
@@ -145,6 +145,8 @@ plus_plot <- ggplot(plus_minus_df, aes(x = Player, y = plusMinusPoints)) +
       plot.background = element_rect(fill = "#FAF8F3", color = NA)
     )
   )
+final
+
 
 
 ```
